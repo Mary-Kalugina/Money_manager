@@ -14,7 +14,12 @@ class AccountsWidget {
    * необходимо выкинуть ошибку.
    * */
   constructor( element ) {
-
+    if (element === undefined) {
+      throw new Error(error);
+    }
+    this.element = element;
+    registerEvents();
+    update();
   }
 
   /**
@@ -25,7 +30,16 @@ class AccountsWidget {
    * вызывает AccountsWidget.onSelectAccount()
    * */
   registerEvents() {
-
+    document.querySelector(".create-account").addEventListener("click", () => {
+      App.getModal("#modal-new-account")
+    });
+    document.querySelectorAll(".account").forEach((elem) => {
+      elem.addEventListener(("click", (e) => {
+        e.preventDefault();
+        AccountsWidget.onSelectAccount();
+      }));
+    })
+    
   }
 
   /**
@@ -39,7 +53,13 @@ class AccountsWidget {
    * метода renderItem()
    * */
   update() {
-
+    if (!User.current()) {
+      return false
+    }
+    this.clear()
+    Account.list().forEach((elem) => {
+      this.renderItem(elem);
+    });
   }
 
   /**
@@ -48,7 +68,10 @@ class AccountsWidget {
    * в боковой колонке
    * */
   clear() {
-
+    document.querySelectorAll(".account").forEach((elem) => {
+      elem.remove();
+    })
+ 
   }
 
   /**
@@ -59,7 +82,13 @@ class AccountsWidget {
    * Вызывает App.showPage( 'transactions', { account_id: id_счёта });
    * */
   onSelectAccount( element ) {
-
+    let activeElem;
+    [...document.querySelectorAll(".account")].find((elem) => {
+      activeElem = elem.classList.contains("active");
+    })
+    element.classList.add("active");
+    activeElem.classList.remove("active");
+    App.showPage( 'transactions', { account_id: element.dataset.id})
   }
 
   /**
@@ -68,7 +97,12 @@ class AccountsWidget {
    * item - объект с данными о счёте
    * */
   getAccountHTML(item){
-
+    return `<li class="active account" data-id="${item.id}">
+    <a href="#">
+        <span>${item.name}</span> /
+        <span>${item.sum} ₽</span>
+    </a>
+</li>`
   }
 
   /**
@@ -78,6 +112,6 @@ class AccountsWidget {
    * и добавляет его внутрь элемента виджета
    * */
   renderItem(data){
-
+    this.element.innerHTML = this.getAccountHTML(data);
   }
 }
