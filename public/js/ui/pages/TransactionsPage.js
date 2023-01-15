@@ -32,13 +32,14 @@ class TransactionsPage {
    * TransactionsPage.removeAccount соответственно
    * */
   registerEvents() {
-    document.querySelector(".remove-account").addEventListener(("click", () => {
-      this.removeAccount();
-    }))
-    document.querySelector(".transaction__remove").addEventListener(("click", () => {
-      this.removeTransaction(e.target.dataset.id);
-    }))
-    
+    this.element.addEventListener("click", (e) => {
+      if (e.target === this.element.querySelector(".remove-account")) {
+        this.removeAccount();
+      }
+      if (e.target === this.element.querySelector(".transaction__remove")) {
+        this.removeTransaction(e.target.dataset.id);
+      }
+    })
   }
 
   /**
@@ -54,13 +55,15 @@ class TransactionsPage {
     if (this.lastOptions === undefined) {
        return false
     }
-    window.confirm("Вы действительно хотите удалить счёт?");
-    Account.remove(this.lastOptions, (err, response) => {
-      if (response.success){
-        App.updateWidgets();
-        App.updateForms();
-      }
-    });
+    if (window.confirm("Вы действительно хотите удалить счёт?")) {
+       Account.remove(this.lastOptions, (err, response) => {
+        if (response.success){
+          App.updateWidgets();
+          App.updateForms();
+        }
+      });
+    }
+   
   }
 
   /**
@@ -70,12 +73,14 @@ class TransactionsPage {
    * либо обновляйте текущую страницу (метод update) и виджет со счетами
    * */
   removeTransaction( id ) {
-    window.confirm("Вы действительно хотите удалить эту транзакцию?");
-    Transaction.remove(id, (err, response) => {
-      if (response.success){
-        App.update();
-      }
-    })
+    if (window.confirm("Вы действительно хотите удалить эту транзакцию?")) {
+      Transaction.remove(id, (err, response) => {
+        if (response.success){
+          App.update();
+        }
+      })
+    }
+    
   }
 
   /**
@@ -162,7 +167,7 @@ class TransactionsPage {
    * */
   renderTransactions(data){
     data.forEach((item) => {
-      document.querySelector(".content").insertAdjacentHTML("beforeEnd", this.getTransactionHTML(item));
+      this.element.querySelector(".transactions-content").textContent = this.getTransactionHTML(item);
     })
   }
 }

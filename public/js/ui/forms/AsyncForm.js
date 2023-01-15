@@ -25,8 +25,10 @@ class AsyncForm {
    * вызывает метод submit()
    * */
   registerEvents() {
-    this.element.addAdventListener(("submit", (e) => e.preventDefault()));//not ready
-    this.submit();
+    this.element.addAdventListener("submit", (e) => {
+      e.preventDefault();
+      this.submit();
+    });
   }
 
   /**
@@ -38,14 +40,7 @@ class AsyncForm {
    * */
   getData() {
     let formData = new FormData( this.element );
-    return formData;
-    // let entries = formData.entries();
-    // let formObj;
-    // for (let item of entries) {
-    //   const key = item[ 0 ];
-    //   const value = item[ 1 ];
-    //   formObj = {[key] : value};
-    // }
+    return Object.fromEntries(formData.entries());
   }
 
   onSubmit(options){

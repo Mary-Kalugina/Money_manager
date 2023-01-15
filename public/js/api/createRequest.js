@@ -4,30 +4,31 @@
  * */
 const createRequest = (options = {}) => {
     const xhr = new XMLHttpRequest();
+    let formData = new FormData();
+    let sendURL = options.url;
     xhr.responseType = 'json';
-    if (options.method !== "GET") {
-       let formData = new FormData;
-        formData.append( 'mail', options.data.mail);
-        formData.append( 'password', options.data.password );
-        try {
-            xhr.open(options.method, options.url)
-            xhr.send(formData);
-        } catch(e) {
-            callback( e );
-        } 
-    } else {
-        try {
-            xhr.open(options.method, `${options.url}?mail=${options.mail}&password=${options.password}`)
-            xhr.send();
-        } catch(e){
-            callback( e );
+    if (options.method !== 'GET') {
+        Object.entries(options.data).forEach(([key, value]) => formData.append(key, value));
+    }
+    else {
+        formData = null;
+        if (!sendURL.includes('/account')) {
+            sendURL += '?';
+            Object.entries(options.data).forEach(([key, value]) => sendURL += `${key}=${value}&`);
+            sendURL = sendURL.slice(0, -1);  
         }
     }
-    xhr.addEventListener("loadend", function(error) {
-        if (error !== null) {
-            options.callback(error, xhr.response);
+    try {
+        xhr.open(options.method, sendURL);
+        xhr.send(formData);       
+    }
+    catch (err) {
+        options.callback(err, null);
+    }
+    xhr.addEventListener('load', function() {
+        if (xhr.status === 200 && xhr.readyState === xhr.DONE) {           
+            options.callback(null, xhr.response);       
         }
-        options.callback(null, xhr.response);
-    })
-    
+    });
 };
+

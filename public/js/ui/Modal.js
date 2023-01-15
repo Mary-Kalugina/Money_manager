@@ -28,6 +28,7 @@ class Modal {
     let modals = [...this.element.querySelectorAll('[data-dismiss="modal"]')];
     modals.forEach((elem) => {
       elem.addEventListener("click", (e) => {
+        e.preventDefault();
         this.onClose(e);
       });
     });
@@ -38,7 +39,6 @@ class Modal {
    * Закрывает текущее окно (Modal.close())
    * */
   onClose(e) {
-    e.preventDefault();
     this.close();
   }
   /**

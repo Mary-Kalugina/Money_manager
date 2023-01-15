@@ -12,10 +12,7 @@ class Account extends Entity {
       url:  this.URL + "/account/" + id, 
       data, 
       method: "GET", 
-      callback: (err, response) => {
-        if (response && response.user){
-          callback(err, response);
-        }
-    }})
+      callback
+    })
   }
 }

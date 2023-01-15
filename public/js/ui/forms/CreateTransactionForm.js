@@ -1,4 +1,3 @@
-const { response } = require("express");
 
 /**
  * Класс CreateTransactionForm управляет формой
@@ -20,10 +19,9 @@ class CreateTransactionForm extends AsyncForm {
    * */
   renderAccountsList() {
     Account.list().forEach(element => {
-      document.getElementById("expense-accounts-list").insertAdjacentHTML('afterBegin', `<option value="${element.id}">${element.name}</option>`);
+      this.element.querySelector(".accounts-select").textContent = `<option value="${element.id}">${element.name}</option>`;
     });
   }
-
   /**
    * Создаёт новую транзакцию (доход или расход)
    * с помощью Transaction.create. По успешному результату
@@ -34,8 +32,8 @@ class CreateTransactionForm extends AsyncForm {
     Transaction.create(data, (err, response) => {
       if (response.success) {
         this.element.reset();
-        this.element.Modal.close();
-        App.update()
+        App.getModal(this.element).close();
+        App.update();
       }
     })
   }
