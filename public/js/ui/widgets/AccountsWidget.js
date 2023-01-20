@@ -15,11 +15,11 @@ class AccountsWidget {
    * */
   constructor( element ) {
     if (element === undefined) {
-      throw new Error(error);
+      throw new Error("Ошибка! Элемент не существует.");
     }
     this.element = element;
-    registerEvents();
-    update();
+    this.registerEvents();
+    this.update();
   }
 
   /**
@@ -32,13 +32,12 @@ class AccountsWidget {
   registerEvents() {
     this.element.addEventListener("click", (e) => {
       e.preventDefault();
-      let accountElem;
-      this.element.querySelectorAll(".account").forEach(elem => accountElem = elem);
+      let accountElem = e.target.closest("account");
       if (e.target === this.element.querySelector(".create-account")){
-        App.getModal(createAccount);
+        App.getModal("createAccount").open();
       }
       if (e.target === accountElem) {
-        this.onSelectAccount();
+        this.onSelectAccount(accountElem);
       }
     })
   }
@@ -57,11 +56,15 @@ class AccountsWidget {
     if (!User.current()) {
       return false
     }
-    this.clear()
-    Account.list().forEach((elem) => {
-      this.renderItem(elem);
+    const data = User.current();
+    Account.list(data, (err, response) => {
+      if (response.success) {
+        this.clear();
+        this.renderItem(response.data);
+      }
     });
   }
+  
 
   /**
    * Очищает список ранее отображённых счетов.

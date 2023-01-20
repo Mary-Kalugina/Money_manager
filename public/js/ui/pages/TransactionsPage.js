@@ -12,7 +12,7 @@ class TransactionsPage {
    * */
   constructor( element ) {
     if (element === undefined) {
-      throw new Error(error);
+      throw new Error("Ошибка! Элемент не существует.");
     }
     this.element = element;
     this.registerEvents();

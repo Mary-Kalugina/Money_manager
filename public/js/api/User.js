@@ -2,15 +2,16 @@
 /**
  * Класс User управляет авторизацией, выходом и
  * регистрацией пользователя из приложения
- * Имеет свойство URL, равное '/user'.
+ * Имеет свойство URL, равное .
  * */
 class User {
   /**
    * Устанавливает текущего пользователя в
    * локальном хранилище.
    * */
+  static URL = '/user';
   static setCurrent(user) {
-    localStorage.setItem(JSON.stringify("user", user));
+    localStorage.setItem("user", JSON.stringify(user));
   }
 
   /**

@@ -36,7 +36,7 @@ class Sidebar {
       e.preventDefault();
       App.getModal('login').open();
     });
-    document.querySelector(".menu-item_login").addEventListener("click", (e) => {
+    document.querySelector(".menu-item_register").addEventListener("click", (e) => {
       e.preventDefault();
       App.getModal('register').open();
     });

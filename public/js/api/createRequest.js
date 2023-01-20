@@ -9,6 +9,7 @@ const createRequest = (options = {}) => {
     xhr.responseType = 'json';
     if (options.method !== 'GET') {
         Object.entries(options.data).forEach(([key, value]) => formData.append(key, value));
+        console.log(formData)
     }
     else {
         formData = null;
@@ -20,6 +21,7 @@ const createRequest = (options = {}) => {
     }
     try {
         xhr.open(options.method, sendURL);
+        console.log(formData)
         xhr.send(formData);       
     }
     catch (err) {

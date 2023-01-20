@@ -14,7 +14,7 @@ class AsyncForm {
    * */
   constructor(element) {
     if (element === undefined) {
-      throw new Error(error);
+      throw new Error("Ошибка! Элемент не существует.");
     }
     this.element = element;
     this.registerEvents()
@@ -25,7 +25,7 @@ class AsyncForm {
    * вызывает метод submit()
    * */
   registerEvents() {
-    this.element.addAdventListener("submit", (e) => {
+    this.element.addEventListener("submit", (e) => {
       e.preventDefault();
       this.submit();
     });
