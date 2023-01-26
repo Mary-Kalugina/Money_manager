@@ -44,7 +44,6 @@ class AsyncForm {
   }
 
   onSubmit(options){
-
   }
 
   /**

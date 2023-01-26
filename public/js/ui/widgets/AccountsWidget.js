@@ -3,6 +3,8 @@
  * отображения счетов в боковой колонке
  * */
 
+
+
 class AccountsWidget {
   /**
    * Устанавливает текущий элемент в свойство element
@@ -15,8 +17,9 @@ class AccountsWidget {
    * */
   constructor( element ) {
     if (element === undefined) {
-      throw new Error("Ошибка! Элемент не существует.");
+      throw console.error(error);
     }
+
     this.element = element;
     this.registerEvents();
     this.update();
@@ -30,16 +33,14 @@ class AccountsWidget {
    * вызывает AccountsWidget.onSelectAccount()
    * */
   registerEvents() {
-    this.element.addEventListener("click", (e) => {
-      e.preventDefault();
-      let accountElem = e.target.closest("account");
-      if (e.target === this.element.querySelector(".create-account")){
-        App.getModal("createAccount").open();
+    document.querySelector(".main-sidebar").addEventListener("click", (e) => {
+      if (e.target.closest(".create-account")) {
+        App.getModal('createAccount').open();
+      };
+      if (e.target.closest(".account")) {
+        this.onSelectAccount(e.target.closest(".account"));
       }
-      if (e.target === accountElem) {
-        this.onSelectAccount(accountElem);
-      }
-    })
+    })   
   }
 
   /**
@@ -53,18 +54,17 @@ class AccountsWidget {
    * метода renderItem()
    * */
   update() {
-    if (!User.current()) {
-      return false
+    const user = User.current();
+    if (!user) {
+      return false;
     }
-    const data = User.current();
-    Account.list(data, (err, response) => {
+    Account.list(user, (err, response) => {
       if (response.success) {
-        this.clear();
-        this.renderItem(response.data);
+        this.clear()
+        this.renderItem(response.data)
       }
-    });
+    })
   }
-  
 
   /**
    * Очищает список ранее отображённых счетов.
@@ -86,13 +86,16 @@ class AccountsWidget {
    * Вызывает App.showPage( 'transactions', { account_id: id_счёта });
    * */
   onSelectAccount( element ) {
-    let activeElem;
+    if (!element) {
+      return false;
+    }
     [...document.querySelectorAll(".account")].find((elem) => {
-      activeElem = elem.classList.contains("active");
+      if (elem.classList.contains("active")) {
+        elem.classList.remove("active");
+      }
     })
     element.classList.add("active");
-    activeElem.classList.remove("active");
-    App.showPage( 'transactions', { account_id: element.dataset.id})
+    App.showPage('transactions', {account_id: element.dataset.id})
   }
 
   /**
@@ -102,11 +105,11 @@ class AccountsWidget {
    * */
   getAccountHTML(item){
     return `<li class="account" data-id="${item.id}">
-    <a href="#">
-        <span>${item.name}</span> /
-        <span>${item.sum} ₽</span>
-    </a>
-    </li>`
+      <a href="#">
+          <span>${item.name}</span>
+          <span>${item.sum} ₽</span>
+      </a>
+    </li>`  
   }
 
   /**
@@ -116,6 +119,12 @@ class AccountsWidget {
    * и добавляет его внутрь элемента виджета
    * */
   renderItem(data){
-    this.element.innerHTML = this.getAccountHTML(data);
+    if (data.length === 0) {
+      return false;
+    }
+    data.forEach((account) => {
+       this.element.innerHTML += this.getAccountHTML(account);
+    })
+   
   }
 }

@@ -26,10 +26,10 @@ class TransactionsWidget {
    * */
   registerEvents() {
     document.querySelector(".create-income-button").addEventListener("click", () => {
-      App.getModal(newIncome).open();
+      App.getModal('newIncome').open();
     });
     document.querySelector(".create-expense-button").addEventListener("click", () => {
-      App.getModal(newExpense).open();
+      App.getModal('newExpense').open();
     });
   }
 }

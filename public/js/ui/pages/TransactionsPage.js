@@ -57,13 +57,14 @@ class TransactionsPage {
     }
     if (window.confirm("Вы действительно хотите удалить счёт?")) {
        Account.remove(this.lastOptions, (err, response) => {
+        console.log(response);
         if (response.success){
           App.updateWidgets();
           App.updateForms();
         }
       });
+      this.clear();
     }
-   
   }
 
   /**
@@ -75,6 +76,7 @@ class TransactionsPage {
   removeTransaction( id ) {
     if (window.confirm("Вы действительно хотите удалить эту транзакцию?")) {
       Transaction.remove(id, (err, response) => {
+        console.log(response);
         if (response.success){
           App.update();
         }
@@ -94,13 +96,14 @@ class TransactionsPage {
       return false
     }
     this.lastOptions = options;
-    Account.get(options.id, (err, response) => {
+    Account.get(options.account_id, (err, response) => {
       if (response.success){
         this.renderTitle(response.data.name);
       }
     });
     Transaction.list(options, (err, response) => {
       if (response.success){
+        this.element.querySelector(".content").textContent = "";
         this.renderTransactions(response.data);
       }
     });
@@ -121,7 +124,7 @@ class TransactionsPage {
    * Устанавливает заголовок в элемент .content-title
    * */
   renderTitle(name){
-    document.querySelector(".content-title").insertAdjacentHTML("afterbegin", name);
+    document.querySelector(".content-title").textContent = name;
   }
 
   /**
@@ -144,7 +147,7 @@ class TransactionsPage {
                 <span class="fa fa-money fa-2x"></span>
             </div>
             <div class="transaction__info">
-                <h4 class="transaction__title">Новый будильник</h4>
+                <h4 class="transaction__title">${item.name}</h4>
                 <div class="transaction__date">${date}</div>
             </div>
           </div>
@@ -167,7 +170,7 @@ class TransactionsPage {
    * */
   renderTransactions(data){
     data.forEach((item) => {
-      this.element.querySelector(".transactions-content").textContent = this.getTransactionHTML(item);
+      this.element.querySelector(".content").innerHTML += this.getTransactionHTML(item); 
     })
   }
 }

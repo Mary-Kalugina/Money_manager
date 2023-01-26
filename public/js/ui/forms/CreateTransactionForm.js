@@ -18,17 +18,20 @@ class CreateTransactionForm extends AsyncForm {
    * Обновляет в форме всплывающего окна выпадающий список
    * */
   renderAccountsList() {
-    const modalAccList = this.element.querySelector('select.accounts-select');
+    const modalAccountList = this.element.querySelector('select.accounts-select');
     
     const data = User.current();  
     Account.list(data, (err, response) => { 
       if (!response) {
-        return false
+        return false;
       }
-      console.log(response)
-      if (response || response.success) {
-        select.innerHTML = response.data.reduce(accObj => modalAccList.insertAdjacentHTML('beforeend', 
-        `<option value="${accObj.id}">${accObj.name}</option>`));
+      if (response.success) {
+        response.data.forEach(account => 
+          modalAccountList.insertAdjacentHTML(
+            'beforeend', 
+            `<option value="${account.id}">${account.name}</option>`
+          )
+        );
       }
     });
   }
@@ -41,10 +44,10 @@ class CreateTransactionForm extends AsyncForm {
   onSubmit(data) {
     Transaction.create(data, (err, response) => {
       if (response.success) {
-        this.element.reset(); 
         App.update();
-        const type = options.data.type;
+        const type = data.type;
         const modalName = "new" + type[0].toUpperCase() + type.substr(1);
+        this.element.reset(); 
         App.getModal(modalName).close();
       }
     })

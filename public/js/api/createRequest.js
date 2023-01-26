@@ -8,20 +8,19 @@ const createRequest = (options = {}) => {
     let sendURL = options.url;
     xhr.responseType = 'json';
     if (options.method !== 'GET') {
+        console.log(options)
         Object.entries(options.data).forEach(([key, value]) => formData.append(key, value));
-        console.log(formData)
     }
-    else {
+    else if (options.method === 'GET') {
         formData = null;
-        if (!sendURL.includes('/account')) {
+        if (options.data) {
             sendURL += '?';
             Object.entries(options.data).forEach(([key, value]) => sendURL += `${key}=${value}&`);
-            sendURL = sendURL.slice(0, -1);  
+            sendURL = sendURL.slice(0, -1);
         }
     }
     try {
         xhr.open(options.method, sendURL);
-        console.log(formData)
         xhr.send(formData);       
     }
     catch (err) {
