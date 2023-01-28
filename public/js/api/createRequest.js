@@ -8,8 +8,11 @@ const createRequest = (options = {}) => {
     let sendURL = options.url;
     xhr.responseType = 'json';
     if (options.method !== 'GET') {
-        console.log(options)
-        Object.entries(options.data).forEach(([key, value]) => formData.append(key, value));
+        if (!options.data) {
+            Object.entries(options).forEach(([key, value]) => formData.append(key, value));
+        } else {
+            Object.entries(options.data).forEach(([key, value]) => formData.append(key, value));
+        }
     }
     else if (options.method === 'GET') {
         formData = null;

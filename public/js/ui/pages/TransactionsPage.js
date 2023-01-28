@@ -35,9 +35,11 @@ class TransactionsPage {
     this.element.addEventListener("click", (e) => {
       if (e.target === this.element.querySelector(".remove-account")) {
         this.removeAccount();
+        return;
       }
-      if (e.target === this.element.querySelector(".transaction__remove")) {
-        this.removeTransaction(e.target.dataset.id);
+      const transactionRemove = e.target.closest('.transaction__remove');
+      if (transactionRemove) {
+        this.removeTransaction(transactionRemove.dataset.id);
       }
     })
   }
@@ -56,14 +58,14 @@ class TransactionsPage {
        return false
     }
     if (window.confirm("Вы действительно хотите удалить счёт?")) {
-       Account.remove(this.lastOptions, (err, response) => {
-        console.log(response);
+       Account.remove({id: this.lastOptions.account_id}, (err, response) => {
         if (response.success){
+          this.element.querySelector(".content").textContent = "";
+          this.clear();
           App.updateWidgets();
           App.updateForms();
         }
       });
-      this.clear();
     }
   }
 
@@ -75,8 +77,7 @@ class TransactionsPage {
    * */
   removeTransaction( id ) {
     if (window.confirm("Вы действительно хотите удалить эту транзакцию?")) {
-      Transaction.remove(id, (err, response) => {
-        console.log(response);
+      Transaction.remove({id}, (err, response) => {
         if (response.success){
           App.update();
         }

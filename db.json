@@ -14,6 +14,15 @@
     },
     {
       "id": "15s2uf8ooldbayd9u"
+    },
+    {
+      "id": "15s2uf4moldd5d6g4"
+    },
+    {
+      "name": "Евгения",
+      "email": "mariya.klgn@skyeng.ru",
+      "password": "1111",
+      "id": "15s2uf7gwldfpm9bs"
     }
   ],
   "accounts": [
@@ -33,44 +42,24 @@
       "id": "3"
     },
     {
-      "name": "Мария Калугина",
-      "user_id": "15s2uf738ldae1lcq",
-      "id": "15s2uf68wldbd1b97"
+      "user_id": "15s2uf4moldd5d6g4",
+      "id": "15s2uf7c0ldd5dd02"
     },
     {
-      "name": "Евгения",
-      "user_id": "15s2uf738ldae1lcq",
-      "id": "15s2uf4foldbf7za1"
+      "user_id": "15s2uf4moldd5d6g4",
+      "id": "15s2uf800lde55jl9"
     },
     {
-      "name": "Мария",
-      "user_id": "15s2uf738ldae1lcq",
-      "id": "15s2uf74sldbhcbku"
+      "user_id": "15s2uf4moldd5d6g4",
+      "id": "15s2uf1h4lde57irt"
     },
     {
-      "name": "Егор",
-      "user_id": "15s2uf738ldae1lcq",
-      "id": "15s2ufc4wldbsbwn2"
+      "user_id": "15s2uf4moldd5d6g4",
+      "id": "15s2uf51wlde5p9i3"
     },
     {
-      "name": "yyy",
-      "user_id": "15s2uf738ldae1lcq",
-      "id": "15s2uf76wldbsdjte"
-    },
-    {
-      "name": "hhh",
-      "user_id": "15s2uf738ldae1lcq",
-      "id": "15s2uf7jgldbseokj"
-    },
-    {
-      "name": "h",
-      "user_id": "15s2uf738ldae1lcq",
-      "id": "15s2uf26sldbsrs2h"
-    },
-    {
-      "name": "Калугина Мария Вячеславовна",
-      "user_id": "15s2uf738ldae1lcq",
-      "id": "15s2uf8tkldcp597p"
+      "user_id": "15s2uf4moldd5d6g4",
+      "id": "15s2uf5iclde5s983"
     }
   ],
   "transactions": [
@@ -210,130 +199,13 @@
       "user_id": "1"
     },
     {
-      "id": "15s2uf4c4ldbd1yn0",
-      "type": "income",
-      "name": "Евгения",
-      "sum": 1000,
-      "account_id": "15s2uf68wldbd1b97",
-      "user_id": "15s2uf738ldae1lcq",
-      "created_at": "2023-01-25T07:44:30.875Z"
-    },
-    {
-      "id": "15s2ufe3cldbd3560",
-      "type": "income",
-      "name": "Мария Калугина",
-      "sum": 1000,
-      "account_id": "15s2uf68wldbd1b97",
-      "user_id": "15s2uf738ldae1lcq",
-      "created_at": "2023-01-25T07:45:25.991Z"
-    },
-    {
-      "id": "15s2uf85kldbd3jdk",
-      "type": "income",
-      "name": "Мария Калугина",
-      "sum": 1000,
-      "account_id": "15s2uf68wldbd1b97",
-      "user_id": "15s2uf738ldae1lcq",
-      "created_at": "2023-01-25T07:45:44.407Z"
-    },
-    {
-      "id": "15s2uf2twldbd3q0c",
+      "id": "15s2ufcscldfpevej",
       "type": "expense",
-      "name": "Евгения",
-      "sum": 1000,
-      "account_id": "15s2uf68wldbd1b97",
-      "user_id": "15s2uf738ldae1lcq",
-      "created_at": "2023-01-25T07:45:53.003Z"
-    },
-    {
-      "id": "15s2ufdooldbd4x9a",
-      "type": "income",
-      "name": "Евгения",
-      "sum": 1000,
-      "account_id": "15s2uf68wldbd1b97",
-      "user_id": "15s2uf738ldae1lcq",
-      "created_at": "2023-01-25T07:46:49.053Z"
-    },
-    {
-      "id": "15s2uf6jsldbd6h4y",
-      "type": "income",
-      "name": "Евгения",
-      "sum": 1000,
-      "account_id": "15s2uf68wldbd1b97",
-      "user_id": "15s2uf738ldae1lcq",
-      "created_at": "2023-01-25T07:48:01.473Z"
-    },
-    {
-      "id": "15s2uf1scldbd8l5i",
-      "type": "income",
-      "name": "Мария",
-      "sum": 1000,
-      "account_id": "15s2uf68wldbd1b97",
-      "user_id": "15s2uf738ldae1lcq",
-      "created_at": "2023-01-25T07:49:39.989Z"
-    },
-    {
-      "id": "15s2uf9owldbdaow3",
-      "type": "income",
       "name": "Мария Калугина",
-      "sum": 1000,
-      "account_id": "15s2uf68wldbd1b97",
-      "user_id": "15s2uf738ldae1lcq",
-      "created_at": "2023-01-25T07:51:18.146Z"
-    },
-    {
-      "id": "15s2uf7nkldbdcevn",
-      "type": "income",
-      "name": "Мария Калугина",
-      "sum": 1000,
-      "account_id": "15s2uf68wldbd1b97",
-      "user_id": "15s2uf738ldae1lcq",
-      "created_at": "2023-01-25T07:52:38.482Z"
-    },
-    {
-      "id": "15s2uf8acldbe11h6",
-      "type": "expense",
-      "name": "Евгения",
-      "sum": 1000,
-      "account_id": "15s2uf68wldbd1b97",
-      "user_id": "15s2uf738ldae1lcq",
-      "created_at": "2023-01-25T08:11:47.513Z"
-    },
-    {
-      "id": "15s2ufdecldbs7idx",
-      "type": "income",
-      "name": "Егор",
-      "sum": 11,
-      "account_id": "15s2uf68wldbd1b97",
-      "user_id": "15s2uf738ldae1lcq",
-      "created_at": "2023-01-25T14:48:43.988Z"
-    },
-    {
-      "id": "15s2uf9t0ldbs8kp4",
-      "type": "expense",
-      "name": "qq",
       "sum": 1111,
-      "account_id": "15s2uf68wldbd1b97",
+      "account_id": "15s2uf27gldfpab5d",
       "user_id": "15s2uf738ldae1lcq",
-      "created_at": "2023-01-25T14:49:33.639Z"
-    },
-    {
-      "id": "15s2ufcqsldcpsc3j",
-      "type": "income",
-      "name": "Евгения",
-      "sum": 1000,
-      "account_id": "15s2uf8tkldcp597p",
-      "user_id": "15s2uf738ldae1lcq",
-      "created_at": "2023-01-26T06:28:42.942Z"
-    },
-    {
-      "id": "15s2uf7pcldd18bf6",
-      "type": "expense",
-      "name": "//",
-      "sum": 50,
-      "account_id": "15s2uf68wldbd1b97",
-      "user_id": "15s2uf738ldae1lcq",
-      "created_at": "2023-01-26T11:49:04.337Z"
+      "created_at": "2023-01-28T08:41:33.306Z"
     }
   ]
 }
