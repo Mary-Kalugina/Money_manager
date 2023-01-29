@@ -26,12 +26,12 @@ class CreateTransactionForm extends AsyncForm {
         return false;
       }
       if (response.success) {
+        modalAccountList.innerHTML = '';
+        let html;
         response.data.forEach(account => 
-          modalAccountList.insertAdjacentHTML(
-            'beforeend', 
-            `<option value="${account.id}">${account.name}</option>`
-          )
+          html += `<option value="${account.id}">${account.name}</option>`
         );
+        modalAccountList.insertAdjacentHTML('beforeend', html)
       }
     });
   }

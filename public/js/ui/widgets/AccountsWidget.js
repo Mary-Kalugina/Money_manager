@@ -17,7 +17,7 @@ class AccountsWidget {
    * */
   constructor( element ) {
     if (element === undefined) {
-      throw console.error(error);
+      throw new Error("Ошибка! Элемент не существует.");
     }
 
     this.element = element;
