@@ -40,7 +40,7 @@ router.put("/", upload.none(), function(request, response) {
     let currentUser = db.get("users").find({id: request.session.id}).value();
     if(!currentUser)// если текущего авторизованного пользователя нету
         //отправление ответа с ошибкой о необходимости авторизации
-        response.json({ success: false, error:"Необходима авторизация" });
+        response.json({ success: false, error:"User not authorized" });
     else{// если авторизованный пользователь существует
         if (reg.test(sum)) {
             let currentUserId = currentUser.id;// получить id текущего пользователя
@@ -56,7 +56,7 @@ router.put("/", upload.none(), function(request, response) {
             }).write();
             response.json({success: true});// отправление ответа с успешностью
         } else {
-            response.json({ success: false, error:"Недопустимые символы в поле Сумма" });
+            response.json({ success: false, error:"Invalid characters in the Amount field" });
         }
     }
 });

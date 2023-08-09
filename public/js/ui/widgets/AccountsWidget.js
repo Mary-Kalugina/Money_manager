@@ -3,8 +3,6 @@
  * отображения счетов в боковой колонке
  * */
 
-
-
 class AccountsWidget {
   /**
    * Устанавливает текущий элемент в свойство element
@@ -95,7 +93,9 @@ class AccountsWidget {
       }
     })
     element.classList.add("active");
-    App.showPage('transactions', {account_id: element.dataset.id})
+    App.showPage('transactions', {account_id: element.dataset.id});
+    let title = element.querySelector('span:first-child').textContent;
+    TransactionsPage.renderTitle(title);
   }
 
   /**

@@ -312,7 +312,7 @@
 }
 .btn-github {
   color: #ffffff;
-  background-color: #444444;
+  background-color: #0c5597;
   border-color: rgba(0, 0, 0, 0.2);
 }
 .btn-github:focus,
@@ -339,12 +339,12 @@
   background-image: none;
 }
 .btn-github .badge {
-  color: #444444;
+  color: #0c5597;
   background-color: #ffffff;
 }
 .btn-google {
   color: #ffffff;
-  background-color: #dd4b39;
+  background-color: #ca0000;
   border-color: rgba(0, 0, 0, 0.2);
 }
 .btn-google:focus,
@@ -371,7 +371,7 @@
   background-image: none;
 }
 .btn-google .badge {
-  color: #dd4b39;
+  color: #ca0000;
   background-color: #ffffff;
 }
 .btn-instagram {

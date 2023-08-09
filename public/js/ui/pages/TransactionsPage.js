@@ -57,13 +57,14 @@ class TransactionsPage {
     if (this.lastOptions === undefined) {
        return false
     }
-    if (window.confirm("Вы действительно хотите удалить счёт?")) {
+    if (window.confirm("Do you really want to delete this account?")) {
        Account.remove({id: this.lastOptions.account_id}, (err, response) => {
         if (response.success){
           this.element.querySelector(".content").textContent = "";
           this.clear();
           App.updateWidgets();
           App.updateForms();
+          document.querySelector(".remove-account").classList.add("hidden");
         }
       });
     }
@@ -76,7 +77,7 @@ class TransactionsPage {
    * либо обновляйте текущую страницу (метод update) и виджет со счетами
    * */
   removeTransaction( id ) {
-    if (window.confirm("Вы действительно хотите удалить эту транзакцию?")) {
+    if (window.confirm("Do you really want to delete this transaction?")) {
       Transaction.remove({id}, (err, response) => {
         if (response.success){
           App.update();
@@ -117,15 +118,15 @@ class TransactionsPage {
    * */
   clear() {
     this.renderTransactions([]);
-    this.renderTitle("Название счёта");
+    this.renderTitle("");
     this.lastOptions = undefined;
   }
 
   /**
    * Устанавливает заголовок в элемент .content-title
    * */
-  renderTitle(name){
-    document.querySelector(".content-title").textContent = name;
+  renderTitle(title){
+    document.querySelector(".content-title").textContent = title;
   }
 
   /**
@@ -153,12 +154,12 @@ class TransactionsPage {
             </div>
           </div>
           <div class="col-md-3">
-            <div class="transaction__summ">
+            <div class="transaction__summ">${item.type === "expense" ? "-" : "+"}
             ${item.sum}<span class="currency">₽</span>
             </div>
           </div>
           <div class="col-md-2 transaction__controls">
-              <button class="btn btn-danger transaction__remove" data-id="${item.id}">
+              <button class="btn red_btn transaction__remove" data-id="${item.id}">
                   <i class="fa fa-trash"></i>  
               </button>
           </div>
@@ -170,8 +171,20 @@ class TransactionsPage {
    * используя getTransactionHTML
    * */
   renderTransactions(data){
+    this.toggleRemoveBtn();
+    if (data.length === 0)  {
+      this.element.querySelector(".content").innerHTML = App.state === "user-logged" ? "Transactions not found" : "";
+      return;
+    }
+    let hlml = "";
     data.forEach((item) => {
-      this.element.querySelector(".content").innerHTML += this.getTransactionHTML(item); 
+      hlml += this.getTransactionHTML(item);
+       
     })
+    this.element.querySelector(".content").innerHTML += hlml;
+  }
+
+  toggleRemoveBtn() {
+    App.state === "user-logged" ? document.querySelector(".remove-account").classList.remove("hidden") : document.querySelector(".remove-account").classList.add("hidden")
   }
 }

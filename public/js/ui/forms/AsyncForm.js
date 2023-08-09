@@ -53,4 +53,25 @@ class AsyncForm {
   submit() {
     this.onSubmit(this.getData())
   }
+
+  showError(text, modal) {
+    let error = document.createElement('div');
+    error.classList.add("error");
+    if (modal === "login") {
+      document.getElementById("login-form").insertAdjacentElement("beforeend", error)
+    } else if (modal === "register")  {
+      document.getElementById("register-form").insertAdjacentElement("beforeend", error); 
+    } else if (modal === "new-account")  {
+      document.getElementById("new-account-form").insertAdjacentElement("beforeend", error); 
+    } else  {
+      document.getElementById("register-form").insertAdjacentElement("beforeend", error); 
+    }
+
+
+    error.innerText = text;
+  }
+
+  removeError() {
+    if (document.querySelector(".error")) document.querySelector(".error").remove();
+  }
 }

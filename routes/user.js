@@ -17,14 +17,13 @@ router.post("/register",upload.none(), function(request, response) {
     //формирование ошибки (не обязательна, но желательна т.к. валидация есть на UI)
     error = "";
     if(name === "")
-        error += 'Поле Имя обязательно для заполнения. ';
+        error += 'The Name field is required. ';
 
     if(email === "")
-        error += 'Поле E-Mail адрес для заполнения. ' ;
+        error += 'The E-Mail field is required. ' ;
 
     if(password === "")
-        error += 'Поле Пароль обязательно для заполнения.';
-    
+        error += 'The Password field is required.'
     //если ошибка сформирована...
     if(error !== "")
         response.json({success: false, error});//отправляем ошибку
@@ -42,7 +41,7 @@ router.post("/register",upload.none(), function(request, response) {
     }
     else{//если существующий пользователь найден...
         //Отправляется ошибка о том, что пользователь такой уже существует
-        response.json({success: false, error: `E-Mail адрес ${email} уже существует.`});
+        response.json({success: false, error: `E-Mail ${email} already exists.`});
     }
 })
 
@@ -60,7 +59,7 @@ router.post("/login",upload.none(), function(request, response) {
         response.json({success: true, user: foundedUser});
     }
     else//если пользователь не существует, то отправляется ответ с ошибкой о ненахождении пользователя
-        response.json({success: false, error:`Пользователь c email ${email} и паролем ${password} не найден`});
+        response.json({success: false, error:`User with email ${email} and password ${password} not found`});
 })
 
 //запрос разлогина пользователя
@@ -70,7 +69,7 @@ router.post("/logout", function(request, response) {
         response.json({success: true});
     } else {
         //отправляется ответ успешности
-        response.json({success: false, error: 'Пользователь не авторизован'});
+        response.json({success: false, error: 'User not authorized'});
     }
 })
 
@@ -89,7 +88,7 @@ router.get("/current", function(request, response) {
     }
     else{
         //отправка ответа с отсутствием пользователя
-        response.json({success: false, user: null, error: 'Пользователь не авторизован'});
+        response.json({success: false, user: null, error: 'User not authorized'});
     }
 })
 

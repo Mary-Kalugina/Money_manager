@@ -3,11 +3,11 @@
  * ---------------------
  */
 .fc-button {
-  background: #f4f4f4;
+  background: #fbfbfb;
   background-image: none;
-  color: #444;
-  border-color: #ddd;
-  border-bottom-color: #ddd;
+  color: #0c5597;
+  border-color: #0c5597;
+  border-bottom-color: #0c5597;
 }
 .fc-button:hover,
 .fc-button:active,

@@ -17,13 +17,13 @@ router.put("/", upload.none(), function(request, response) {
     let user = db.get("users").find({id: request.session.id});// поиск авторизованного пользователя
     let userValue = user.value();// получение значения авторизованного пользователя
     if(!userValue){
-        response.json({success: false, error: "Пользователь не авторизован"});// отправка ответа с данными
+        response.json({success: false, error: "User not authorized"});// отправка ответа с данными
         return;
     }
 
     const createdAccount = db.get("accounts").find({name}).value();
     if(createdAccount){
-        response.json({success: false, error: "Счёт с таким именем уже существует"});
+        response.json({success: false, error: "An account by that name already exists"});
         return;
     }
     
@@ -56,7 +56,7 @@ router.get("/:id?", upload.none(), function(request, response) {
     let userValue = user.value();
 
     if(!userValue){
-      response.json({success: false, error:"Пользователь не авторизован"});
+      response.json({success: false, error:"User not authorized"});
       return;
     }
 
@@ -65,7 +65,7 @@ router.get("/:id?", upload.none(), function(request, response) {
     if(accountId){
         let currentAccount = db.get("accounts").find({id: accountId}).value();
         if(!currentAccount){
-          response.json({success: false, error: `Счёт c идентификатором ${accountId} не найден`});
+          response.json({success: false, error: `Account with identifier ${accountId} not found`});
           return;
         }
         let currentAccountTransactions = db.get("transactions").filter({account_id: currentAccount.id}).value();

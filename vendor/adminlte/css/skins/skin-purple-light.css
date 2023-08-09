@@ -66,7 +66,7 @@
 }
 .skin-purple-light .user-panel > .info,
 .skin-purple-light .user-panel > .info > a {
-  color: #444444;
+  color: #0c5597;
 }
 .skin-purple-light .sidebar-menu > li {
   -webkit-transition: border-left-color 0.3s ease;
@@ -84,7 +84,7 @@
 .skin-purple-light .sidebar-menu > li:hover > a,
 .skin-purple-light .sidebar-menu > li.active > a {
   color: #000000;
-  background: #f4f4f5;
+  /* background: #f4f4f5; */
 }
 .skin-purple-light .sidebar-menu > li.active {
   border-left-color: #605ca8;
@@ -96,7 +96,7 @@
   background: #f4f4f5;
 }
 .skin-purple-light .sidebar a {
-  color: #444444;
+  color: #0c5597;
 }
 .skin-purple-light .sidebar a:hover {
   text-decoration: none;

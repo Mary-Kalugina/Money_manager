@@ -45,6 +45,7 @@ class Sidebar {
       e.preventDefault();
       User.logout((err, response) => {
       if (response.success) {
+        document.querySelector(".remove-account").classList.add("hidden");
         App.setState( 'init' );
       }
       })

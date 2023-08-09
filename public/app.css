@@ -1,3 +1,7 @@
+*:focus:not(.focus-visible) {
+  outline: none;
+}
+
 .user-panel {
   display: none;
 }
@@ -31,8 +35,16 @@
   display: none;
 }
 
-.create-account {
+.create-account, .logout_btn {
+  display: flex;
   cursor: pointer;
+  background-color: #fbfbfb;
+  color: #0c5597;
+  height: 30px;
+  padding: 5px;
+  border-radius: 5px;
+  align-items: center;
+  width: 110px;
 }
 
 .transaction {
@@ -53,19 +65,19 @@
 }
 
 .transaction_income .transaction__title {
-  color: green;
+  color: #0c5597;
 }
 
 .transaction_expense .transaction__title {
-  color: red;
+  color: #ca0000;
 }
 
 .transaction_income .transaction__icon .fa {
-  background: green;
+  background: #0c5597;
 }
 
 .transaction_expense .transaction__icon .fa {
-  background: red;
+  background: #ca0000;
 }
 
 .transaction__summ {
@@ -79,4 +91,110 @@
 
 .transaction__controls {
   line-height: 70px;
+}
+
+.error {
+  font-size: 14px;
+  color: #ca0000;
+}
+
+.main-header {
+  background: #0c5597;
+}
+
+.modal-title {
+  color: #0c5597;
+}
+
+.create-income-button:hover {
+  font-weight: bold;
+}
+
+.create-expense-button:hover {
+  font-weight: bold;
+}
+
+.create-income-button, .create-expense-button {
+  background:#fbfbfb;
+  color: #0c5597 !important;
+}
+.blue_btn {
+  background: #0c5597;
+  color: #fbfbfb;
+  border-color: #fbfbfb !important;
+}
+
+.blue_btn:hover {
+  background:#fbfbfb;
+  color: #0c5597 !important;
+  border-color: #0c5597 !important;
+}
+
+.red_btn {
+  background: #ca0000;
+  color: #fbfbfb;
+  border-color: #fbfbfb !important;
+}
+
+.red_btn:hover {
+  background: #fbfbfb;
+  color: #ca0000;
+  border-color: #ca0000 !important;
+}
+
+.hidden {
+  overflow: hidden;
+}
+
+.white_butn {
+  background-color: #fbfbfb;
+  color: #0c5597;
+  border-color: #0c5597;
+}
+
+.white_butn:hover {
+  background-color: #0c5597;
+  color: #fbfbfb;
+  border-color: #fbfbfb;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color:white;
+  border-bottom: white 1px solid;
+  cursor: default;
+}
+
+.header:hover {
+  font-weight: normal !important;
+}
+
+.my_sidebar-menu {
+  display: none;
+  white-space: nowrap;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    margin: 15px;
+    justify-content: space-evenly;
+}
+
+.my_sidebar-menu > li:hover {
+  background-color: #0c5597 !important;
+  font-weight: bold;
+}
+
+.menu-item_logout {
+  margin-right: auto;
+}
+
+.accounts-panel > li {
+  margin-bottom: 10px;
+}
+
+.active {
+  font-weight: bold;
 }

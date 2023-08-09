@@ -23,6 +23,30 @@
       "email": "mariya.klgn@skyeng.ru",
       "password": "1111",
       "id": "15s2uf7gwldfpm9bs"
+    },
+    {
+      "name": "Евгения",
+      "email": "Marina.kalugina9900@gmail.com",
+      "password": "bsfsb",
+      "id": "c9bbdo6kolkw8qc87"
+    },
+    {
+      "name": "Евгения",
+      "email": "den.komissarov.11@bk.ru",
+      "password": "333",
+      "id": "c9bbdo23slkw97lsg"
+    },
+    {
+      "name": "Евгения",
+      "email": "marina.kalugina990@gmail.com",
+      "password": "444",
+      "id": "c9bbdo6qsll22qw3u"
+    },
+    {
+      "name": "Евгения",
+      "email": "den.komisrov.11@bk.ru",
+      "password": "222",
+      "id": "c9bbdo8coll3gcplu"
     }
   ],
   "accounts": [
@@ -70,6 +94,36 @@
       "name": "Евгения",
       "user_id": "15s2uf7gwldfpm9bs",
       "id": "15s2uf7x4ldh2tuwa"
+    },
+    {
+      "name": "HTLS",
+      "user_id": "c9bbdo23slkw97lsg",
+      "id": "c9bbdob54ll21earc"
+    },
+    {
+      "name": "Bank",
+      "user_id": "c9bbdo6qsll22qw3u",
+      "id": "c9bbdoadgll234e1f"
+    },
+    {
+      "name": "Trip",
+      "user_id": "c9bbdo6qsll22qw3u",
+      "id": "c9bbdodocll236075"
+    },
+    {
+      "name": "Party",
+      "user_id": "c9bbdo6qsll22qw3u",
+      "id": "c9bbdobrgll236aer"
+    },
+    {
+      "name": "Евгенияv",
+      "user_id": "c9bbdo23slkw97lsg",
+      "id": "c9bbdocvsll3gb4b8"
+    },
+    {
+      "name": "Егор",
+      "user_id": "c9bbdo8coll3gcplu",
+      "id": "c9bbdo3wwll3glch9"
     }
   ],
   "transactions": [
@@ -216,6 +270,51 @@
       "account_id": "15s2uf27gldfpab5d",
       "user_id": "15s2uf738ldae1lcq",
       "created_at": "2023-01-28T08:41:33.306Z"
+    },
+    {
+      "id": "c9bbdocwkll23bqf7",
+      "type": "income",
+      "name": "Salary",
+      "sum": 70000,
+      "account_id": "c9bbdoadgll234e1f",
+      "user_id": "c9bbdo6qsll22qw3u",
+      "created_at": "2023-08-08T09:19:53.730Z"
+    },
+    {
+      "id": "c9bbdoaw0ll23c143",
+      "type": "expense",
+      "name": "tax",
+      "sum": 1000,
+      "account_id": "c9bbdoadgll234e1f",
+      "user_id": "c9bbdo6qsll22qw3u",
+      "created_at": "2023-08-08T09:20:07.586Z"
+    },
+    {
+      "id": "c9bbdofcwll23cl63",
+      "type": "income",
+      "name": "Flight",
+      "sum": 1000,
+      "account_id": "c9bbdodocll236075",
+      "user_id": "c9bbdo6qsll22qw3u",
+      "created_at": "2023-08-08T09:20:33.578Z"
+    },
+    {
+      "id": "c9bbdo8doll3gb95h",
+      "type": "expense",
+      "name": "Евгения",
+      "sum": 1000,
+      "account_id": "c9bbdob54ll21earc",
+      "user_id": "c9bbdo23slkw97lsg",
+      "created_at": "2023-08-09T08:11:12.532Z"
+    },
+    {
+      "id": "c9bbdodq0ll3gbiqy",
+      "type": "income",
+      "name": "Евгения",
+      "sum": 1000,
+      "account_id": "c9bbdob54ll21earc",
+      "user_id": "c9bbdo23slkw97lsg",
+      "created_at": "2023-08-09T08:11:24.969Z"
     }
   ]
 }

@@ -19,7 +19,7 @@ class CreateTransactionForm extends AsyncForm {
    * */
   renderAccountsList() {
     const modalAccountList = this.element.querySelector('select.accounts-select');
-    
+    this.element.querySelector(".error").innerHTML = "";
     const data = User.current();  
     Account.list(data, (err, response) => { 
       if (!response) {
@@ -27,7 +27,12 @@ class CreateTransactionForm extends AsyncForm {
       }
       if (response.success) {
         modalAccountList.innerHTML = '';
-        let html;
+        if (response.data.length === 0) {
+          console.log(this.element)
+          this.element.querySelector(".error").innerHTML = "Create account first."
+          return false;
+        }
+        let html = '';
         response.data.forEach(account => 
           html += `<option value="${account.id}">${account.name}</option>`
         );
@@ -49,6 +54,9 @@ class CreateTransactionForm extends AsyncForm {
         const modalName = "new" + type[0].toUpperCase() + type.substr(1);
         this.element.reset(); 
         App.getModal(modalName).close();
+      }  else {
+        this.removeError();
+        this.showError(response.error, "new-account")
       }
     })
   }

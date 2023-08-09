@@ -126,7 +126,7 @@ class App {
    * App.getWidget( 'transactions' ); // извелекает App.forms.transactions
    * */
   static getForm(formName) {
-    return this.forms[formName];
+    return this.forms[formName];sidebar-menu
   }
 
   /**
@@ -157,11 +157,23 @@ class App {
     this.state = state;
 
     if (state === "user-logged") {
+      this.removeSidebarStyle();
       this.update();
     }
     if (state === "init") {
+      this.addSidebarStyle();
       this.clear();
     }
+  }
+
+  static removeSidebarStyle() {
+    document.querySelector(".accounts-panel").classList.remove("sidebar-menu");
+    document.querySelector(".accounts-panel").classList.add("my_sidebar-menu");
+  }
+
+  static addSidebarStyle() {
+    document.querySelector(".accounts-panel").classList.add("sidebar-menu");
+    document.querySelector(".accounts-panel").classList.remove("my_sidebar-menu");
   }
 
   /**
