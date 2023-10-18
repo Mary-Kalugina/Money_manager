@@ -1,11 +1,11 @@
-Money manager. 
+<h3>Money manager. </h3>
 
 
 <h4>My contribution to this project is the logic of: login and logout, accounts' creation, adding/deletting  of incomes and expenses. 
 </h4>
 
 <h4>
-- Download the project <br>
+- Clone the project <br>
 - npm install<br>
 - npm start<br>
 </h4>
